@@ -1,38 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>All The Best</title>
+  <title>All The Best – Board Exam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
-      font-family: Arial;
-      background: linear-gradient(to right, #00c6ff, #0072ff);
-      color: white;
-      text-align: center;
-      padding-top: 100px;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
     .popup {
       background: white;
-      color: black;
-      padding: 20px;
-      border-radius: 10px;
-      width: 80%;
-      max-width: 300px;
-      margin: auto;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      color: #333;
+      padding: 25px;
+      border-radius: 12px;
+      width: 85%;
+      max-width: 320px;
+      text-align: center;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      animation: zoom 0.5s ease;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #0072ff;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      background: #0072ff;
+      color: white;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    @keyframes zoom {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
   </style>
 </head>
+
 <body>
 
-<script>
-  alert("🎯 All The Best for Board Exam!\n📚 Achha karke aana\n🎁 Exam ke baad gift milega!");
-</script>
+  <div class="popup">
+    <h2>🌟 All The Best 🌟</h2>
+    <p>Board Exam ke liye best wishes 💯</p>
+    <p>Mehnat karo, success pakki hai 💪</p>
+    <p>Achha perform kiya to gift milega 🎁</p>
+    <button onclick="closePopup()">OK</button>
+  </div>
 
-<div class="popup">
-  <h2>🔥 All The Best 🔥</h2>
-  <p>Board Exam ke liye best wishes 💯</p>
-  <p>Mehnat karo, success pakki hai 🚀</p>
-</div>
+  <script>
+    function closePopup() {
+      document.querySelector('.popup').style.display = 'none';
+    }
+  </script>
 
 </body>
 </html>
