@@ -1,69 +1,158 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>All The Best – Board Exam</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Board Exam Motivation</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #00c6ff, #0072ff);
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+<style>
+body{
+  margin:0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;
+  text-align:center;
+}
 
-    .popup {
-      background: white;
-      color: #333;
-      padding: 25px;
-      border-radius: 12px;
-      width: 85%;
-      max-width: 320px;
-      text-align: center;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-      animation: zoom 0.5s ease;
-    }
+.container{
+  margin-top:60px;
+  background:rgba(0,0,0,0.7);
+  padding:30px 20px;
+  border-radius:20px;
+  width:90%;
+  max-width:420px;
+  margin:auto;
+  box-shadow:0 0 20px rgba(0,255,255,0.3);
+  display:none;
+}
 
-    h2 {
-      margin-top: 0;
-      color: #0072ff;
-    }
+h1{color:#00ffcc;}
 
-    button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      border: none;
-      background: #0072ff;
-      color: white;
-      border-radius: 6px;
-      font-size: 16px;
-    }
+.inputBox{
+  margin-top:120px;
+}
 
-    @keyframes zoom {
-      from { transform: scale(0.5); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-  </style>
+input{
+  padding:12px;
+  border-radius:8px;
+  border:none;
+  width:220px;
+  font-size:16px;
+}
+
+button{
+  padding:12px 22px;
+  border:none;
+  border-radius:12px;
+  font-size:15px;
+  background:#00ffcc;
+  color:black;
+  margin:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+button:hover{
+  background:#00ccaa;
+}
+
+.line{
+  width:80%;
+  height:2px;
+  background:#00ffcc;
+  margin:15px auto;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="popup">
-    <h2>🌟 All The Best 🌟</h2>
-    <p>Board Exam ke liye best wishes 💯</p>
-    <p>Mehnat karo, success pakki hai 💪</p>
-    <p>Achha perform kiya to gift milega 🎁</p>
-    <button onclick="closePopup()">OK</button>
-  </div>
+<!-- Name Input Screen -->
+<div class="inputBox" id="inputBox">
 
-  <script>
-    function closePopup() {
-      document.querySelector('.popup').style.display = 'none';
-    }
-  </script>
+<h2>Apna Naam Likho ✍️</h2>
+
+<input type="text" id="username" placeholder="Enter your name">
+
+<br><br>
+
+<button onclick="start()">Continue ➡️</button>
+
+</div>
+
+
+<!-- Main Website -->
+<div class="container" id="mainBox">
+
+<h1 id="showName"></h1>
+<h3>Class 10 | Board Exam 2026</h3>
+
+<div class="line"></div>
+
+<p>
+Presented by <b>Career Point Coaching</b><br>
+Under Guidance of <b>Director Rajnish Sir</b>
+</p>
+
+<p>"Mehnat aur Vishwas hi Safalta hai"</p>
+
+<button onclick="motivate()">Motivate Me 🔔</button>
+<button onclick="share()">Share 📲</button>
+
+<div class="footer">
+© 2026 | Created by Anjani Sharma
+</div>
+
+</div>
+
+<audio id="sound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+
+<script>
+
+let userName = "";
+
+function start(){
+
+  let name = document.getElementById("username").value;
+
+  if(name.trim()==""){
+    alert("Pehle apna naam likho 😊");
+    return;
+  }
+
+  userName = name;
+
+  document.getElementById("showName").innerText =
+  "Welcome, " + userName + " 🌟";
+
+  document.getElementById("inputBox").style.display="none";
+  document.getElementById("mainBox").style.display="block";
+}
+
+function motivate(){
+
+  document.getElementById("sound").play();
+
+  alert(
+  "🔥 " + userName + " 🔥\n" +
+  "Tum exam mein zarur safal hoge 💪📚\n" +
+  "Best Wishes from Rajnish Sir"
+  );
+}
+
+function share(){
+
+  let msg =
+  "🌟 Board Exam Motivation 🌟\n\n" +
+  "Name: " + userName + "\n" +
+  "Career Point Coaching\n" +
+  "Director: Rajnish Sir\n\n" +
+  "All The Best 💪📚";
+
+  window.open("https://wa.me/?text="+encodeURIComponent(msg));
+
+}
+
+</script>
 
 </body>
 </html>
