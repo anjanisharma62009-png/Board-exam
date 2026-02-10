@@ -2,155 +2,316 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Board Exam Motivation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Point | Board Exam 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  color:white;
-  text-align:center;
+/* --- Professional CSS Reset & Variables --- */
+:root {
+  --primary: #00ffcc;
+  --dark-bg: #0f2027;
+  --glass: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
 }
 
-.container{
-  margin-top:60px;
-  background:rgba(0,0,0,0.7);
-  padding:30px 20px;
-  border-radius:20px;
-  width:90%;
-  max-width:420px;
-  margin:auto;
-  box-shadow:0 0 20px rgba(0,255,255,0.3);
-  display:none;
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
 }
 
-h1{color:#00ffcc;}
-
-.inputBox{
-  margin-top:120px;
+/* --- Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-input{
-  padding:12px;
-  border-radius:8px;
-  border:none;
-  width:220px;
-  font-size:16px;
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
-button{
-  padding:12px 22px;
-  border:none;
-  border-radius:12px;
-  font-size:15px;
-  background:#00ffcc;
-  color:black;
-  margin:8px;
-  cursor:pointer;
-  font-weight:bold;
+/* --- Container Styles --- */
+.container {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 40px 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 450px;
+  text-align: center;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  animation: fadeIn 1s ease-out;
 }
 
-button:hover{
-  background:#00ccaa;
+h1 {
+  color: var(--primary);
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
 }
 
-.line{
-  width:80%;
-  height:2px;
-  background:#00ffcc;
-  margin:15px auto;
+.subtitle {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 20px;
 }
+
+/* --- Input Section --- */
+.input-group {
+  margin: 30px 0;
+}
+
+input {
+  padding: 15px;
+  border-radius: 50px;
+  border: 2px solid transparent;
+  width: 100%;
+  font-size: 16px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  text-align: center;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: var(--primary);
+  background: rgba(255,255,255,0.2);
+}
+
+::placeholder { color: #ccc; }
+
+/* --- Buttons --- */
+button {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  background: var(--primary);
+  color: #000;
+  margin: 10px 5px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(0, 255, 204, 0.6);
+}
+
+button.secondary {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  box-shadow: none;
+}
+
+button.secondary:hover {
+  background: var(--primary);
+  color: black;
+}
+
+/* --- Dynamic Content Area --- */
+.hidden { display: none; }
+
+.timer-box {
+  background: rgba(0,0,0,0.3);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 20px 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.quote-box {
+  min-height: 80px;
+  margin: 20px 0;
+  font-style: italic;
+  color: #ffd700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge {
+  background: #ff4757;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+/* --- Footer --- */
+.footer {
+  margin-top: 30px;
+  font-size: 12px;
+  opacity: 0.6;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 10px;
+}
+
+/* --- Confetti Effect (Simple CSS) --- */
+.confetti {
+  position: fixed;
+  top: -10px;
+  z-index: 999;
+  font-size: 20px;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(100vh) rotate(720deg); }
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- Name Input Screen -->
-<div class="inputBox" id="inputBox">
-
-<h2>Apna Naam Likho ✍️</h2>
-
-<input type="text" id="username" placeholder="Enter your name">
-
-<br><br>
-
-<button onclick="start()">Continue ➡️</button>
-
+<div class="container" id="loginScreen">
+  <h1>Career Point <span class="badge">2026</span></h1>
+  <p>Class 10 Board Exam Preparation</p>
+  
+  <div class="input-group">
+    <input type="text" id="username" placeholder="Enter your Name" autocomplete="off">
+  </div>
+  
+  <button onclick="enterSite()">Start Journey 🚀</button>
 </div>
 
+<div class="container hidden" id="mainScreen">
+  <h2 id="welcomeText">Welcome!</h2>
+  <div class="subtitle">Under Guidance of <b>Director Rajnish Sir</b></div>
 
-<!-- Main Website -->
-<div class="container" id="mainBox">
+  <div class="timer-box" id="countdown">
+    Loading Timer...
+  </div>
 
-<h1 id="showName"></h1>
-<h3>Class 10 | Board Exam 2026</h3>
+  <div class="quote-box" id="quoteDisplay">
+    "Mehnat aur Vishwas hi Safalta hai"
+  </div>
 
-<div class="line"></div>
+  <button onclick="generateMotivation()">Get Motivation 💡</button>
+  <button class="secondary" onclick="shareOnWhatsapp()">Share with Friends 📲</button>
 
-<p>
-Presented by <b>Career Point Coaching</b><br>
-Under Guidance of <b>Director Rajnish Sir</b>
-</p>
-
-<p>"Mehnat aur Vishwas hi Safalta hai"</p>
-
-<button onclick="motivate()">Motivate Me 🔔</button>
-<button onclick="share()">Share 📲</button>
-
-<div class="footer">
-© 2026 | Created by Anjani Sharma
+  <div class="footer">
+    Created by <b>Anjani Sharma</b> | © 2026 Career Point
+  </div>
 </div>
-
-</div>
-
-<audio id="sound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
 
 <script>
-
 let userName = "";
+const quotes = [
+  "Sapne wo nahi jo neend mein aate hain, sapne wo hain jo neend nahi aane dete. 🔥",
+  "Topper koi aur nahi, tum hi ho.. bas shuruwat abhi karni hai! 📚",
+  "Rajnish Sir kehte hain: Consistency is the key to Success. 💪",
+  "Board Exam sirf ek exam nahi, tumhari mehnat ka celebration hai. 🎉",
+  "Daro mat, ladna seekho. Jeet tumhari hi hogi! 🏆",
+  "Abhi nahi to kabhi nahi. Utho aur padho! 📖"
+];
 
-function start(){
+// --- Step 1: Login Function ---
+function enterSite() {
+  const input = document.getElementById("username");
+  const name = input.value.trim();
 
-  let name = document.getElementById("username").value;
-
-  if(name.trim()==""){
-    alert("Pehle apna naam likho 😊");
+  if(name === "") {
+    input.style.borderColor = "#ff4757";
+    input.placeholder = "Naam likhna zaroori hai!";
     return;
   }
 
   userName = name;
-
-  document.getElementById("showName").innerText =
-  "Welcome, " + userName + " 🌟";
-
-  document.getElementById("inputBox").style.display="none";
-  document.getElementById("mainBox").style.display="block";
+  document.getElementById("loginScreen").style.display = "none";
+  document.getElementById("mainScreen").classList.remove("hidden");
+  document.getElementById("mainScreen").style.display = "block"; // Ensure block display
+  document.getElementById("welcomeText").innerHTML = `Hello, ${userName} 👋`;
+  
+  startCountdown();
 }
 
-function motivate(){
+// --- Step 2: Motivation Logic ---
+function generateMotivation() {
+  // Random Quote
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const quoteDiv = document.getElementById("quoteDisplay");
+  
+  // Animation Reset
+  quoteDiv.style.opacity = 0;
+  setTimeout(() => {
+    quoteDiv.innerText = `"${quotes[randomIndex]}"`;
+    quoteDiv.style.opacity = 1;
+  }, 200);
 
-  document.getElementById("sound").play();
-
-  alert(
-  "🔥 " + userName + " 🔥\n" +
-  "Tum exam mein zarur safal hoge 💪📚\n" +
-  "Best Wishes from Rajnish Sir"
-  );
+  createConfetti();
 }
 
-function share(){
+// --- Step 3: Countdown Timer ---
+function startCountdown() {
+  // Setting Exam Date (Example: Feb 15, 2026)
+  const examDate = new Date("February 15, 2026 09:00:00").getTime();
 
-  let msg =
-  "🌟 Board Exam Motivation 🌟\n\n" +
-  "Name: " + userName + "\n" +
-  "Career Point Coaching\n" +
-  "Director: Rajnish Sir\n\n" +
-  "All The Best 💪📚";
+  setInterval(() => {
+    const now = new Date().getTime();
+    const distance = examDate - now;
 
-  window.open("https://wa.me/?text="+encodeURIComponent(msg));
+    if (distance < 0) {
+      document.getElementById("countdown").innerHTML = "EXAM STARTED!";
+      return;
+    }
 
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    
+    document.getElementById("countdown").innerHTML = 
+      `⏳ Time Left: ${days} Days ${hours} Hours`;
+  }, 1000);
 }
+
+// --- Step 4: Share Function ---
+function shareOnWhatsapp() {
+  const msg = `🌟 *Board Exam Motivation 2026* 🌟\n\nHi, I am *${userName}*!\nI am preparing with *Career Point Coaching*.\n\n"Mehnat aur Vishwas hi Safalta hai"\n- Rajnish Sir\n\nJoin me & Let's Top together! 💪📚`;
+  
+  window.open("https://wa.me/?text=" + encodeURIComponent(msg), "_blank");
+}
+
+// --- Extra: Confetti Effect ---
+function createConfetti() {
+  for(let i=0; i<20; i++) {
+    const confetti = document.createElement('div');
+    confetti.innerText = ['🎉','🔥','📚','💯','✨'][Math.floor(Math.random()*5)];
+    confetti.classList.add('confetti');
+    confetti.style.left = Math.random() * 100 + 'vw';
+    confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
+    document.body.appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 4000);
+  }
+}
+
+// Input Enter Key Support
+document.getElementById("username").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    enterSite();
+  }
+});
 
 </script>
 
